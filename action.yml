@@ -2,9 +2,10 @@
 name: "OpenAPI YAML to JSON Converter"
 description: "Converts an OpenAPI YAML specification to JSON and commits the updated file"
 author: "Devi Prakash"
+
 branding:
-  color: "blue"
-  icon: "gear"
+  color: "blue"        
+  icon: "gear" 
 
 runs:
   using: "composite"
