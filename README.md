@@ -33,13 +33,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Convert YAML to JSON
-        uses: dprakash2101/openapi-yaml-json-converter@v1
+        uses: dprakash2101/openapi-yaml-json-converter@v1.0.0
         with:
           yaml_path: path/to/your/openapi-spec.yaml   # <-- replace with your YAML file
           json_path: path/to/your/openapi-spec.json   # <-- replace with desired JSON output
           git_username: ${{ secrets.ADMIN_USERNAME }}
           git_email: ${{ secrets.ADMIN_EMAIL }}
           commit_message: "Update OpenAPI JSON from YAML"
+          token: ${{ secrets.Github_Token }}
 ```
 
 ## Author
@@ -53,3 +54,4 @@ This action is created and maintained by [Devi Prakash](https://github.com/dprak
 This project is licensed under the **MIT License**.  
 
 See the [LICENSE](LICENSE) file for details.
+
