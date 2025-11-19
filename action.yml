@@ -3,8 +3,8 @@ description: "Converts an OpenAPI YAML specification to JSON and commits the upd
 author: "Devi Prakash"
 
 branding:
-  color: "blue"        
-  icon: "file-plus" 
+  color: "blue"
+  icon: "file-plus"
 
 runs:
   using: "composite"
@@ -13,8 +13,18 @@ runs:
       uses: actions/checkout@v4
 
     - name: Run conversion script
-      shell: bash                 
-      run: ./entrypoint.sh "${{ inputs.yaml_path }}" "${{ inputs.json_path }}" "${{ inputs.git_username }}" "${{ inputs.git_email }}" "${{ inputs.commit_message }}"
+      shell: bash
+      run: |
+        # Ensure the entrypoint is executable
+        chmod +x "${{ github.action_path }}/entrypoint.sh"
+
+        # Run the script with all inputs
+        "${{ github.action_path }}/entrypoint.sh" \
+          "${{ inputs.yaml_path }}" \
+          "${{ inputs.json_path }}" \
+          "${{ inputs.git_username }}" \
+          "${{ inputs.git_email }}" \
+          "${{ inputs.commit_message }}"
 
 inputs:
   yaml_path:
